@@ -14,15 +14,15 @@ public class BinarySearchTree {
         Node rightChild;
         int value;
 
-        Node(int new_value) {
-            value = new_value;
+        Node(int newValue) {
+            value = newValue;
             leftChild = null;
             rightChild = null;
         }
     }
     
     // Constructor:
-    public void BinarySearchTree() {
+    public BinarySearchTree() {
         root = null;
     }
 
@@ -80,9 +80,11 @@ public class BinarySearchTree {
 
         return node;
     }
-
-
-    // Look up function:
+    
+    /**
+     * Returns true if the node with a given value
+     * exists within the BST.
+     */
     public boolean contains(int value) {
         return contains(root, value);
     }
@@ -101,6 +103,10 @@ public class BinarySearchTree {
         }
     }
 
+    /**
+     * Returns the distance from a node of value1 to a node
+     * of value2 within the BST.
+     */
     public int longestPathLeaftoLeaf(int value1, int value2) {
         Node commonNode = highestCommonNode(root, value1, value2);
         System.out.println("common node is: " + commonNode.value);
@@ -110,8 +116,9 @@ public class BinarySearchTree {
     }
 
     /**
-    * Assumes value1 < value 2
-     */
+    * Retrieves the highest common root of two nodes 
+    * with values 'value1' and 'value2'.
+    */
     private Node highestCommonNode(Node node, int value1, int value2) {
         if (contains(node.leftChild, value1) && contains(node.rightChild, value2)) {
             return node;
@@ -125,6 +132,10 @@ public class BinarySearchTree {
         
     }
 
+    /**
+     * Retreives the depth of a specific node with a given value.
+     * @return the depth of that node from the root.
+     */
     public int depthOfNode(int value) {
         return depthOfNode(root, value);
     }
@@ -144,10 +155,6 @@ public class BinarySearchTree {
     // Size function:
 
     // Maximum depth:
-
-    // Minimum value function:
-
-    // Maximum value function:
 
     /**
     * Prints out the Integer values of the Binary Search Tree 
@@ -191,7 +198,7 @@ public class BinarySearchTree {
     * in pre-order.
     */
     public void printPreOrder() {
-        printPostOrder(root);
+        printPreOrder(root);
     }
     
     private void printPreOrder(Node node) {
@@ -205,7 +212,7 @@ public class BinarySearchTree {
     }
 
     /**
-     
+    * Retrieves the left-most node within the BST.
     */
     public int findMinimum(Node node) {
         if (node.leftChild == null) {
@@ -215,9 +222,21 @@ public class BinarySearchTree {
         }
     }
 
+    /**
+    * Retrieves the right-most node within the BST.
+    */
+    public int findMaximum(Node node) {
+        if (node.rightChild == null) {
+            return node.value;
+        } else {
+            return findMinimum(node.rightChild);
+        }
+    }
+
     // Testing the methods above:
     public static void main(String[] args) {
         BinarySearchTree tester = new BinarySearchTree();
+        // Populating the tree:
         tester.insert(3);
         tester.insert(6);
         tester.insert(9);
@@ -234,8 +253,12 @@ public class BinarySearchTree {
         tester.delete(-10);
         System.out.println(" ");
         tester.printInOrder();
+
+        // Testing the contains() method:
         System.out.println(tester.contains(4));
         System.out.println(tester.contains(-4));
+
+        // Testing the longestPathLeafToLeaf method:
         System.out.println(tester.longestPathLeaftoLeaf(-5,6));
         System.out.println(tester.longestPathLeaftoLeaf(-9,0));
     }
