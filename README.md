@@ -12,7 +12,7 @@
   
 ### And, the following algorithms:
 1. Fibonacci (3 ways):
-  * Recursive Approach
-  * Memo-ized Approach
-  * Bottoms Up Approach
+    * Recursive Approach
+    * Memo-ized Approach
+    * Bottoms Up Approach
   
