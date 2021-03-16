@@ -2,6 +2,7 @@
 * BinarySearchTree class for Integers where the
 * smaller or equal values residing in the left nodes and
 * larger values residing in the right nodes.
+* @author Rae Abunahla (Github: @raean)
 */
 public class BinarySearchTree {
 
