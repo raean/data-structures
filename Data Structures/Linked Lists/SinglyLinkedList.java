@@ -32,7 +32,8 @@ public class SinglyLinkedList {
      * A constructor with a head value passed as a parameter.
      */
     public SinglyLinkedList(int value) {
-        head = new Node(value);
+        this.head = new Node(value);
+        this.tail = this.head;
     }
 
     /**
